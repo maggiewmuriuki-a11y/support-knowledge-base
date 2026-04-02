@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Services Portfolio — ISON Global & Spectlance Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #162032;
+    --navy-light: #1e2f45;
+    --gold: #c9a84c;
+    --gold-light: #e2c47a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --text-muted: #8a9bb0;
+    --text-body: #cdd7e3;
+    --accent-blue: #3d87c9;
+    --accent-green: #2eb87a;
+    --accent-red: #e05a5a;
+    --excel-green: #217346;
+    --word-blue: #2b579a;
+    --outlook-blue: #0078d4;
+    --teams-purple: #6264a7;
+    --sharepoint-blue: #0364b8;
+    --border: rgba(201,168,76,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: relative;
+    padding: 80px 60px 60px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61,135,201,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .company-badges {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .for-badge {
+    background: rgba(61,135,201,0.1);
+    border: 1px solid rgba(61,135,201,0.3);
+    color: #7db8e8;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.15;
+    max-width: 700px;
+  }
+  .header-title span {
+    color: var(--gold);
+  }
+
+  .header-meta {
+    margin-top: 20px;
+    display: flex; gap: 32px; flex-wrap: wrap;
+    font-size: 13px; color: var(--text-muted);
+  }
+  .header-meta strong { color: var(--text-body); }
+
+  .tag-row {
+    margin-top: 28px;
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .tag {
+    padding: 5px 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .tag.active {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.25);
+    color: var(--gold-light);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,27,42,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex; gap: 0;
+    overflow-x: auto;
+  }
+  nav a {
+    display: flex; align-items: center; gap: 8px;
+    padding: 16px 20px;
+    text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  nav a:hover { color: var(--cream); border-bottom-color: var(--gold); }
+  nav .app-icon {
+    width: 18px; height: 18px;
+    border-radius: 3px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: white;
+  }
+
+  /* ─── MAIN ─── */
+  main { max-width: 1200px; margin: 0 auto; padding: 60px 40px; }
+
+  /* ─── SECTION HEADERS ─── */
+  .section { margin-bottom: 72px; }
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: 14px; color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  /* ─── APP DOCUMENT CARDS ─── */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .doc-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    animation: fadeUp 0.5s ease both;
+  }
+  .doc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+    border-color: rgba(201,168,76,0.3);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .doc-chrome {
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .doc-chrome .app-ico {
+    width: 22px; height: 22px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; color: white; flex-shrink: 0;
+  }
+  .doc-chrome .filename {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-muted);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .doc-chrome .dot { color: rgba(255,255,255,0.15); }
+
+  .doc-body { padding: 20px 22px; }
+
+  /* Excel */
+  .excel-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .excel-table thead th {
+    background: rgba(33,115,70,0.3);
+    color: #7dd4a8;
+    padding: 6px 8px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid rgba(33,115,70,0.2);
+    letter-spacing: 0.04em;
+  }
+  .excel-table tbody td {
+    padding: 6px 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-body);
+    vertical-align: middle;
+  }
+  .excel-table tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .excel-table tbody tr:hover td { background: rgba(33,115,70,0.07); }
+  .status-chip {
+    display: inline-block; padding: 2px 8px;
+    border-radius: 10px; font-size: 10px; font-weight: 600;
+  }
+  .chip-done { background: rgba(46,184,122,0.15); color: #2eb87a; border: 1px solid rgba(46,184,122,0.2); }
+  .chip-prog { background: rgba(61,135,201,0.15); color: #7db8e8; border: 1px solid rgba(61,135,201,0.2); }
+  .chip-pend { background: rgba(201,168,76,0.1); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.2); }
+  .chip-rev  { background: rgba(224,90,90,0.1); color: #e88; border: 1px solid rgba(224,90,90,0.2); }
+
+  /* Word */
+  .word-doc {
+    font-size: 12px; line-height: 1.7;
+    color: var(--text-body);
+  }
+  .word-doc .w-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--cream);
+    border-bottom: 1px solid rgba(43,87,154,0.4);
+    padding-bottom: 6px; margin-bottom: 12px;
+  }
+  .word-doc .w-subhead {
+    font-size: 11px; font-weight: 600; color: #7db8e8;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 10px 0 4px;
+  }
+  .word-doc p { margin-bottom: 8px; }
+  .word-doc .w-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  .word-doc .w-table th {
+    background: rgba(43,87,154,0.2); color: #a3c4ee;
+    padding: 5px 8px; font-size: 10px; text-align: left;
+    border: 1px solid rgba(43,87,154,0.2);
+  }
+  .word-doc .w-table td {
+    padding: 5px 8px; font-size: 11px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .word-doc .highlight {
+    background: rgba(43,87,154,0.15);
+    border-left: 3px solid #2b579a;
+    padding: 8px 12px;
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 10px 0;
+  }
+
+  /* Outlook */
+  .email-header {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding-bottom: 14px; margin-bottom: 14px;
+  }
+  .email-field { display: flex; gap: 8px; margin-bottom: 4px; font-size: 12px; }
+  .email-field label { color: var(--text-muted); font-size: 11px; min-width: 36px; }
+  .email-subject {
+    font-size: 14px; font-weight: 600; color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .email-body { font-size: 12px; line-height: 1.75; color: var(--text-body); }
+  .email-sig {
+    margin-top: 14px; padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 11px; color: var(--text-muted);
+  }
+  .email-sig strong { color: var(--text-body); }
+
+  /* Teams */
+  .teams-card {
+    background: rgba(98,100,167,0.07);
+    border: 1px solid rgba(98,100,167,0.2);
+    border-radius: 6px; padding: 14px;
+    font-size: 12px;
+  }
+  .teams-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+  .teams-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: white; flex-shrink: 0;
+  }
+  .teams-msg { flex: 1; }
+  .teams-name { font-size: 11px; font-weight: 600; color: var(--cream); margin-bottom: 2px; }
+  .teams-text { color: var(--text-body); line-height: 1.5; }
+  .teams-time { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+  .teams-topic {
+    background: rgba(98,100,167,0.15);
+    border-radius: 4px; padding: 8px 12px; margin-bottom: 12px;
+    font-size: 11px; font-weight: 600; color: #a9aae0;
+    letter-spacing: 0.04em;
+  }
+  .action-item {
+    display: flex; gap: 8px; align-items: center;
+    padding: 5px 0; font-size: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .action-item:last-child { border-bottom: none; }
+  .check { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 8px; }
+  .check-done { background: rgba(46,184,122,0.2); color: #2eb87a; border: 1px solid rgba(46,184,122,0.3); }
+  .check-open { border: 1px solid rgba(255,255,255,0.2); }
+
+  /* Power BI / Charts */
+  .kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px; }
+  .kpi {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px; padding: 12px; text-align: center;
+  }
+  .kpi-val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--cream); }
+  .kpi-label { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+  .kpi-delta { font-size: 10px; margin-top: 4px; }
+  .delta-up { color: #2eb87a; } .delta-dn { color: #e05a5a; }
+  .bar-chart { display: flex; flex-direction: column; gap: 8px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; font-size: 11px; }
+  .bar-label { width: 80px; text-align: right; color: var(--text-muted); flex-shrink: 0; }
+  .bar-track { flex: 1; background: rgba(255,255,255,0.06); border-radius: 2px; height: 14px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
+  .bar-val { width: 36px; font-size: 11px; color: var(--text-muted); text-align: right; }
+
+  /* SharePoint */
+  .sp-header {
+    background: rgba(3,100,184,0.15);
+    border: 1px solid rgba(3,100,184,0.25);
+    border-radius: 6px; padding: 10px 14px;
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 14px;
+  }
+  .sp-breadcrumb { font-size: 11px; color: #5ba4d4; }
+  .sp-breadcrumb span { color: var(--text-muted); }
+  .file-list { display: flex; flex-direction: column; gap: 4px; }
+  .file-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 4px;
+    font-size: 12px; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .file-row:hover { background: rgba(255,255,255,0.04); }
+  .file-ico { width: 20px; height: 20px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: white; flex-shrink: 0; }
+  .file-name { flex: 1; color: var(--text-body); }
+  .file-meta { font-size: 10px; color: var(--text-muted); }
+
+  /* Forms */
+  .form-preview {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px; padding: 16px;
+  }
+  .form-q { margin-bottom: 14px; }
+  .form-q label { font-size: 12px; font-weight: 500; color: var(--cream); display: block; margin-bottom: 6px; }
+  .form-q .fq-sub { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; display: block; }
+  .form-input {
+    width: 100%; background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;
+    padding: 8px 10px; font-size: 12px; color: var(--text-body);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .form-rating { display: flex; gap: 4px; margin-top: 4px; }
+  .form-rating span {
+    width: 28px; height: 28px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; cursor: pointer;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
+  }
+  .form-rating span.sel {
+    background: rgba(201,168,76,0.2); border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* Wide cards */
+  .doc-card.wide { grid-column: 1 / -1; }
+  .wide-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media(max-width:700px) { .wide-inner { grid-template-columns: 1fr; } }
+
+  /* ─── SKILLS BANNER ─── */
+  .skills-banner {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(61,135,201,0.06));
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 32px 40px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    gap: 24px; margin-bottom: 60px;
+  }
+  .skill-item { display: flex; gap: 12px; align-items: flex-start; }
+  .skill-ico {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800; color: white; flex-shrink: 0;
+  }
+  .skill-name { font-size: 13px; font-weight: 600; color: var(--cream); }
+  .skill-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 12px; color: var(--text-muted);
+  }
+  footer strong { color: var(--gold); }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .doc-card:nth-child(1) { animation-delay: 0s; }
+  .doc-card:nth-child(2) { animation-delay: 0.08s; }
+  .doc-card:nth-child(3) { animation-delay: 0.16s; }
+  .doc-card:nth-child(4) { animation-delay: 0.24s; }
+  .doc-card:nth-child(5) { animation-delay: 0.32s; }
+  .doc-card:nth-child(6) { animation-delay: 0.40s; }
+  .doc-card:nth-child(7) { animation-delay: 0.48s; }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-top">
+    <div class="company-badges">
+      <div class="badge"><div class="badge-dot"></div>ISON Global</div>
+      <div class="badge"><div class="badge-dot"></div>Spectlance Global</div>
+    </div>
+    <div class="for-badge">▸ Applying for: Client Services Coordinator @ Vensure Employer Solutions</div>
+  </div>
+  <h1 class="header-title">Work Samples Portfolio<br><span>Client Services &amp; Microsoft 365</span></h1>
+  <div class="header-meta">
+    <div><strong>Role</strong> &nbsp;Client Services Coordinator</div>
+    <div><strong>Tools</strong> &nbsp;Microsoft 365 · HubSpot CRM · SharePoint · Teams</div>
+    <div><strong>Experience</strong> &nbsp;Event Coordination · Contract Management · CRM</div>
+  </div>
+  <div class="tag-row">
+    <span class="tag active">Event Coordination</span>
+    <span class="tag active">Contract Management</span>
+    <span class="tag active">HubSpot CRM</span>
+    <span class="tag active">Microsoft 365</span>
+    <span class="tag">Remote Work</span>
+    <span class="tag">Client Communication</span>
+    <span class="tag">Reporting & Analytics</span>
+  </div>
+</header>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#events"><div class="app-ico" style="background:#217346">X</div> Event Planning</a>
+  <a href="#contracts"><div class="app-ico" style="background:#2b579a">W</div> Contract Management</a>
+  <a href="#crm"><div class="app-ico" style="background:#ff7a59">H</div> CRM / HubSpot</a>
+  <a href="#comms"><div class="app-ico" style="background:#0078d4">O</div> Client Communication</a>
+  <a href="#collab"><div class="app-ico" style="background:#6264a7">T</div> Collaboration</a>
+  <a href="#reporting"><div class="app-ico" style="background:#f2c811">BI</div> Reporting</a>
+  <a href="#docs"><div class="app-ico" style="background:#0364b8">S</div> SharePoint</a>
+</nav>
+
+<main>
+
+  <!-- ─── SKILLS SUMMARY ─── -->
+  <div class="skills-banner">
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#217346">X</div>
+      <div><div class="skill-name">Excel</div><div class="skill-sub">Trackers, Budgets, Pivot Tables</div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#2b579a">W</div>
+      <div><div class="skill-name">Word</div><div class="skill-sub">Contracts, SOPs, Reports</div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#0078d4">O</div>
+      <div><div class="skill-name">Outlook</div><div class="skill-sub">Client Emails, Scheduling</div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#6264a7">T</div>
+      <div><div class="skill-name">Teams</div><div class="skill-sub">Meetings, Channel Management</div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#0364b8">S</div>
+      <div><div class="skill-name">SharePoint</div><div class="skill-sub">Document Libraries, Portals</div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#ff7a59">H</div>
+      <div><div class="skill-name">HubSpot</div><div class="skill-sub">CRM Pipelines, Client Tracking</div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#f2c811; color:#333">BI</div>
+      <div><div class="skill-name">Power BI</div><div class="skill-sub">Dashboards, KPI Tracking</div></div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-ico" style="background:#cc3333">F</div>
+      <div><div class="skill-name">Forms</div><div class="skill-sub">Surveys, Event Registrations</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 1: EVENTS ═══ -->
+  <section class="section" id="events">
+    <div class="section-label">Microsoft Excel + Word</div>
+    <div class="section-title">Event Coordination Samples</div>
+    <div class="section-desc">End-to-end event planning documents — from master trackers to run-of-show schedules — produced for corporate clients across ISON Global and Spectlance Global.</div>
+    <div class="doc-grid">
+
+      <!-- Excel Event Tracker -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#217346;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">X</div>
+          <span class="filename">Q2_Events_Master_Tracker.xlsx</span>
+          <span class="dot">·</span>
+          <span class="filename">ISON Global</span>
+        </div>
+        <div class="doc-body">
+          <table class="excel-table">
+            <thead>
+              <tr>
+                <th>Event</th><th>Date</th><th>Client</th><th>Attendees</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Annual HR Summit</td><td>14 Mar</td><td>Vensure EA</td><td>120</td><td><span class="status-chip chip-done">✓ Done</span></td></tr>
+              <tr><td>Onboarding Workshop</td><td>28 Mar</td><td>KCB Group</td><td>45</td><td><span class="status-chip chip-done">✓ Done</span></td></tr>
+              <tr><td>Client Appreciation Gala</td><td>11 Apr</td><td>Spectlance</td><td>200</td><td><span class="status-chip chip-prog">● In Progress</span></td></tr>
+              <tr><td>Regional Sales Kick-off</td><td>24 Apr</td><td>ISON Global</td><td>60</td><td><span class="status-chip chip-pend">○ Pending</span></td></tr>
+              <tr><td>Compliance Webinar</td><td>05 May</td><td>Vensure EA</td><td>300</td><td><span class="status-chip chip-pend">○ Pending</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Word Run of Show -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#2b579a;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">W</div>
+          <span class="filename">HR_Summit_RunOfShow.docx</span>
+          <span class="dot">·</span>
+          <span class="filename">ISON Global</span>
+        </div>
+        <div class="doc-body">
+          <div class="word-doc">
+            <div class="w-heading">Annual HR Summit — Run of Show</div>
+            <div class="w-subhead">Day Schedule · 14 March 2025</div>
+            <table class="w-table">
+              <thead><tr><th>Time</th><th>Activity</th><th>Owner</th></tr></thead>
+              <tbody>
+                <tr><td>08:00</td><td>Venue setup & AV check</td><td>Coord. Team</td></tr>
+                <tr><td>09:00</td><td>Registration & welcome coffee</td><td>Front Desk</td></tr>
+                <tr><td>09:30</td><td>Opening remarks — CEO</td><td>Protocol</td></tr>
+                <tr><td>10:00</td><td>Keynote: Future of HR Tech</td><td>Speaker Liaison</td></tr>
+                <tr><td>11:30</td><td>Breakout sessions (3 rooms)</td><td>Coord. Team</td></tr>
+                <tr><td>13:00</td><td>Lunch & networking</td><td>Catering</td></tr>
+                <tr><td>14:30</td><td>Panel Discussion</td><td>Moderator</td></tr>
+                <tr><td>16:00</td><td>Closing & evaluations</td><td>Coord. Team</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Excel Budget Tracker -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#217346;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">X</div>
+          <span class="filename">Gala_Budget_Tracker.xlsx</span>
+          <span class="dot">·</span>
+          <span class="filename">Spectlance Global</span>
+        </div>
+        <div class="doc-body">
+          <table class="excel-table">
+            <thead><tr><th>Category</th><th>Budget (KES)</th><th>Actual</th><th>Variance</th></tr></thead>
+            <tbody>
+              <tr><td>Venue Hire</td><td>450,000</td><td>440,000</td><td style="color:#2eb87a">+10,000</td></tr>
+              <tr><td>Catering (200 pax)</td><td>320,000</td><td>318,500</td><td style="color:#2eb87a">+1,500</td></tr>
+              <tr><td>AV & Production</td><td>180,000</td><td>195,000</td><td style="color:#e05a5a">-15,000</td></tr>
+              <tr><td>Guest Speakers</td><td>120,000</td><td>120,000</td><td style="color:#8a9bb0">0</td></tr>
+              <tr><td>Décor & Branding</td><td>85,000</td><td>79,200</td><td style="color:#2eb87a">+5,800</td></tr>
+              <tr style="font-weight:600"><td>TOTAL</td><td>1,155,000</td><td>1,152,700</td><td style="color:#2eb87a">+2,300</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Microsoft Forms -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#cc3333;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">F</div>
+          <span class="filename">Post_Event_Feedback_Form</span>
+          <span class="dot">·</span>
+          <span class="filename">Microsoft Forms</span>
+        </div>
+        <div class="doc-body">
+          <div class="form-preview">
+            <div class="form-q">
+              <label>How would you rate today's event overall?</label>
+              <div class="form-rating">
+                <span>1</span><span>2</span><span>3</span><span>4</span><span class="sel">5</span>
+                <span class="sel">6</span><span class="sel">7</span><span class="sel">8</span><span>9</span><span>10</span>
+              </div>
+            </div>
+            <div class="form-q">
+              <label>How satisfied were you with the logistics &amp; coordination?</label>
+              <div class="form-rating">
+                <span>😞</span><span>😐</span><span>🙂</span><span class="sel">😊</span><span>🤩</span>
+              </div>
+            </div>
+            <div class="form-q">
+              <label>What could be improved?</label>
+              <input class="form-input" type="text" value="More networking time between sessions" readonly>
+            </div>
+            <div class="form-q">
+              <label>Would you attend future ISON Global events?</label>
+              <input class="form-input" type="text" value="Yes — very well organised!" readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 2: CONTRACTS ═══ -->
+  <section class="section" id="contracts">
+    <div class="section-label">Microsoft Word</div>
+    <div class="section-title">Contract Management Samples</div>
+    <div class="section-desc">Sample service agreements, SOW documents, and contract trackers managed on behalf of corporate clients.</div>
+    <div class="doc-grid">
+
+      <!-- Contract Excerpt -->
+      <div class="doc-card" style="grid-column: span 2;">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#2b579a;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">W</div>
+          <span class="filename">Client_Services_Agreement_v3.docx</span>
+          <span class="dot">·</span>
+          <span class="filename">Spectlance Global · Confidential</span>
+        </div>
+        <div class="doc-body">
+          <div class="word-doc">
+            <div class="w-heading">SERVICE AGREEMENT — SPECTLANCE GLOBAL LIMITED</div>
+            <div class="wide-inner">
+              <div>
+                <div class="w-subhead">Parties</div>
+                <p><strong style="color:var(--cream)">Service Provider:</strong> Spectlance Global Limited, registered in Kenya, P.O. Box 00100 Nairobi.</p>
+                <p><strong style="color:var(--cream)">Client:</strong> [Client Organisation Name], hereinafter referred to as "the Client."</p>
+
+                <div class="w-subhead">Scope of Services</div>
+                <p>Spectlance Global shall provide Client Services Coordination support, including but not limited to: event planning and logistics, onboarding facilitation, CRM data management, and monthly client reporting.</p>
+
+                <div class="w-subhead">Deliverables &amp; Timeline</div>
+                <table class="w-table">
+                  <thead><tr><th>Milestone</th><th>Deadline</th><th>Owner</th></tr></thead>
+                  <tbody>
+                    <tr><td>Project kick-off meeting</td><td>Week 1</td><td>Coord.</td></tr>
+                    <tr><td>CRM data migration</td><td>Week 2</td><td>CRM Mgr</td></tr>
+                    <tr><td>First event delivery</td><td>Week 4</td><td>Events</td></tr>
+                    <tr><td>Monthly report – Month 1</td><td>Day 30</td><td>Coord.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <div class="w-subhead">Terms &amp; Conditions</div>
+                <div class="highlight">All deliverables are subject to client sign-off within 5 business days of submission. Failure to provide feedback within this period shall constitute deemed approval.</div>
+
+                <div class="w-subhead">Payment Schedule</div>
+                <table class="w-table">
+                  <thead><tr><th>Tranche</th><th>Amount (USD)</th><th>Trigger</th></tr></thead>
+                  <tbody>
+                    <tr><td>Deposit (40%)</td><td>$1,200</td><td>Contract signing</td></tr>
+                    <tr><td>Mid-point (30%)</td><td>$900</td><td>Week 4 delivery</td></tr>
+                    <tr><td>Final (30%)</td><td>$900</td><td>Project close</td></tr>
+                  </tbody>
+                </table>
+
+                <div class="w-subhead">Authorised Signatories</div>
+                <p>Signed by the authorised representatives of both parties on the date written below.</p>
+                <p style="margin-top:14px; font-size:11px; color:var(--text-muted);">
+                  ___________________________ &nbsp;&nbsp; ___________________________<br>
+                  <em>For Spectlance Global Ltd</em> &nbsp;&nbsp;&nbsp; <em>For the Client</em>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contract Tracker Excel -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#217346;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">X</div>
+          <span class="filename">Active_Contracts_Tracker.xlsx</span>
+          <span class="dot">·</span>
+          <span class="filename">ISON Global</span>
+        </div>
+        <div class="doc-body">
+          <table class="excel-table">
+            <thead><tr><th>Ref #</th><th>Client</th><th>Value</th><th>Expiry</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>IG-2025-041</td><td>Vensure EA</td><td>$12,000</td><td>Dec 2025</td><td><span class="status-chip chip-done">Active</span></td></tr>
+              <tr><td>IG-2025-038</td><td>KCB Group</td><td>$8,500</td><td>Sep 2025</td><td><span class="status-chip chip-done">Active</span></td></tr>
+              <tr><td>IG-2025-033</td><td>Safaricom PLC</td><td>$15,200</td><td>Jun 2025</td><td><span class="status-chip chip-rev">Review</span></td></tr>
+              <tr><td>IG-2025-027</td><td>NCBA Bank</td><td>$6,000</td><td>Mar 2026</td><td><span class="status-chip chip-prog">Drafting</span></td></tr>
+              <tr><td>SG-2025-012</td><td>Equity Bank</td><td>$9,800</td><td>Aug 2025</td><td><span class="status-chip chip-done">Active</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Word SOP -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#2b579a;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">W</div>
+          <span class="filename">Contract_Renewal_SOP.docx</span>
+          <span class="dot">·</span>
+          <span class="filename">Spectlance Global</span>
+        </div>
+        <div class="doc-body">
+          <div class="word-doc">
+            <div class="w-heading">Contract Renewal SOP</div>
+            <div class="w-subhead">Purpose</div>
+            <p>This SOP defines the standard steps for managing client contract renewals to ensure no lapse in service delivery and maintain compliance.</p>
+            <div class="w-subhead">Process Steps</div>
+            <table class="w-table">
+              <thead><tr><th>#</th><th>Action</th><th>Owner</th><th>Timeline</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Generate 90-day expiry alert via CRM</td><td>CS Coord.</td><td>Day 1</td></tr>
+                <tr><td>2</td><td>Send renewal proposal to client</td><td>CS Coord.</td><td>Day 5</td></tr>
+                <tr><td>3</td><td>Negotiate terms (if required)</td><td>Account Mgr</td><td>Days 6–20</td></tr>
+                <tr><td>4</td><td>Generate updated contract in Word</td><td>CS Coord.</td><td>Day 21</td></tr>
+                <tr><td>5</td><td>Obtain e-signatures via DocuSign</td><td>CS Coord.</td><td>Day 25</td></tr>
+                <tr><td>6</td><td>File on SharePoint & update CRM</td><td>CS Coord.</td><td>Day 26</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 3: CRM ═══ -->
+  <section class="section" id="crm">
+    <div class="section-label">HubSpot CRM</div>
+    <div class="section-title">CRM Management Samples</div>
+    <div class="section-desc">Client pipeline tracking, contact records, and deal management workflows maintained in HubSpot CRM.</div>
+    <div class="doc-grid">
+
+      <!-- HubSpot Pipeline -->
+      <div class="doc-card wide">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#ff7a59;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">H</div>
+          <span class="filename">HubSpot — Client Services Pipeline</span>
+          <span class="dot">·</span>
+          <span class="filename">ISON Global · Q2 2025</span>
+        </div>
+        <div class="doc-body">
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;overflow-x:auto">
+            <!-- Stage columns -->
+            <div>
+              <div style="font-size:10px;font-weight:700;color:#8a9bb0;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;padding:0 2px">New Lead</div>
+              <div style="background:rgba(255,122,89,0.06);border:1px solid rgba(255,122,89,0.15);border-radius:6px;padding:8px;margin-bottom:6px">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">Zuri Health Ltd</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$3,200 · Events</div>
+                <div style="font-size:10px;color:#ff9970;margin-top:3px">Contact made</div>
+              </div>
+              <div style="background:rgba(255,122,89,0.06);border:1px solid rgba(255,122,89,0.15);border-radius:6px;padding:8px;">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">Absa Kenya</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$7,500 · Full svc</div>
+                <div style="font-size:10px;color:#ff9970;margin-top:3px">Inbound referral</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:700;color:#8a9bb0;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;padding:0 2px">Qualified</div>
+              <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:6px;padding:8px;margin-bottom:6px">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">Britam Holdings</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$5,100 · Coord.</div>
+                <div style="font-size:10px;color:var(--gold-light);margin-top:3px">Discovery call done</div>
+              </div>
+              <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:6px;padding:8px;">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">DTB Kenya</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$4,400 · Events</div>
+                <div style="font-size:10px;color:var(--gold-light);margin-top:3px">Proposal sent</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:700;color:#8a9bb0;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;padding:0 2px">Proposal Sent</div>
+              <div style="background:rgba(61,135,201,0.06);border:1px solid rgba(61,135,201,0.15);border-radius:6px;padding:8px;margin-bottom:6px">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">KCB Group</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$8,500 · Full svc</div>
+                <div style="font-size:10px;color:#7db8e8;margin-top:3px">Awaiting sign-off</div>
+              </div>
+              <div style="background:rgba(61,135,201,0.06);border:1px solid rgba(61,135,201,0.15);border-radius:6px;padding:8px;">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">Old Mutual KE</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$3,800 · Events</div>
+                <div style="font-size:10px;color:#7db8e8;margin-top:3px">Review in progress</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:700;color:#8a9bb0;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;padding:0 2px">Negotiation</div>
+              <div style="background:rgba(98,100,167,0.08);border:1px solid rgba(98,100,167,0.2);border-radius:6px;padding:8px;margin-bottom:6px">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">Safaricom PLC</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$15,200 · Full svc</div>
+                <div style="font-size:10px;color:#a9aae0;margin-top:3px">Term revisions</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:700;color:#8a9bb0;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;padding:0 2px">Won / Closed</div>
+              <div style="background:rgba(46,184,122,0.06);border:1px solid rgba(46,184,122,0.2);border-radius:6px;padding:8px;margin-bottom:6px">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">Vensure EA</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$12,000 · Full svc</div>
+                <div style="font-size:10px;color:#2eb87a;margin-top:3px">✓ Contracted</div>
+              </div>
+              <div style="background:rgba(46,184,122,0.06);border:1px solid rgba(46,184,122,0.2);border-radius:6px;padding:8px;">
+                <div style="font-size:11px;font-weight:600;color:var(--cream)">Equity Bank</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">$9,800 · Coord.</div>
+                <div style="font-size:10px;color:#2eb87a;margin-top:3px">✓ Active</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRM Contact Notes -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#ff7a59;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">H</div>
+          <span class="filename">HubSpot — Activity Log Sample</span>
+        </div>
+        <div class="doc-body">
+          <table class="excel-table">
+            <thead><tr><th>Date</th><th>Contact</th><th>Activity</th><th>Next Step</th></tr></thead>
+            <tbody>
+              <tr><td>02 Apr</td><td>Jane Mwangi</td><td>Discovery call (30 min)</td><td>Send proposal</td></tr>
+              <tr><td>01 Apr</td><td>Brian Otieno</td><td>Follow-up email sent</td><td>Await response</td></tr>
+              <tr><td>31 Mar</td><td>Amina Hassan</td><td>Contract signed</td><td>Onboard – Week 1</td></tr>
+              <tr><td>29 Mar</td><td>Peter Kamau</td><td>Renewal discussion</td><td>Send revised SOW</td></tr>
+              <tr><td>28 Mar</td><td>Ruth Njeri</td><td>Event debrief sent</td><td>Request feedback form</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 4: COMMUNICATION ═══ -->
+  <section class="section" id="comms">
+    <div class="section-label">Microsoft Outlook</div>
+    <div class="section-title">Client Communication Samples</div>
+    <div class="section-desc">Professional client-facing email templates and correspondence used across both companies.</div>
+    <div class="doc-grid">
+
+      <!-- Welcome Email -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#0078d4;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">O</div>
+          <span class="filename">Client Onboarding Welcome Email</span>
+        </div>
+        <div class="doc-body">
+          <div class="email-header">
+            <div class="email-subject">Welcome to ISON Global — Your Onboarding Pack</div>
+            <div class="email-field"><label>To:</label><span>amina.hassan@equitybank.co.ke</span></div>
+            <div class="email-field"><label>CC:</label><span>accounts@isonglobal.co.ke</span></div>
+            <div class="email-field"><label>Date:</label><span>31 March 2025, 9:14 AM</span></div>
+          </div>
+          <div class="email-body">
+            <p>Dear Amina,</p>
+            <p>Thank you for choosing ISON Global. We are delighted to welcome Equity Bank as a valued partner.</p>
+            <p>Attached please find your onboarding pack, which includes:</p>
+            <p>📎 Signed Service Agreement (PDF)<br>📎 Project Timeline &amp; Milestones (Excel)<br>📎 Your Dedicated Portal Link (SharePoint)<br>📎 Team Contacts &amp; Escalation Matrix</p>
+            <p>Your dedicated Client Services Coordinator will reach out within <strong style="color:var(--cream)">24 hours</strong> to schedule your kick-off call. In the meantime, please don't hesitate to contact me directly.</p>
+            <p>We look forward to a productive partnership.</p>
+          </div>
+          <div class="email-sig">
+            <strong>Client Services Team · ISON Global</strong><br>
+            📞 +254 700 000 000 &nbsp;|&nbsp; 🌐 www.isonglobal.co.ke<br>
+            Nairobi Business Park, Westlands, Nairobi
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Confirmation Email -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#0078d4;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">O</div>
+          <span class="filename">Event Logistics Confirmation</span>
+          <span class="dot">·</span>
+          <span class="filename">Spectlance Global</span>
+        </div>
+        <div class="doc-body">
+          <div class="email-header">
+            <div class="email-subject">RE: Client Appreciation Gala – Final Logistics Confirmation</div>
+            <div class="email-field"><label>To:</label><span>events@nairobiregency.com</span></div>
+            <div class="email-field"><label>CC:</label><span>team@spectlanceglobal.com</span></div>
+            <div class="email-field"><label>Date:</label><span>02 April 2025, 11:30 AM</span></div>
+          </div>
+          <div class="email-body">
+            <p>Dear Collins,</p>
+            <p>Please confirm receipt of the updated guest list (200 pax) and the following changes agreed on our call:</p>
+            <p>✅ Venue setup: <strong style="color:var(--cream)">11 April, 8:00 AM</strong><br>
+            ✅ AV crew access from <strong style="color:var(--cream)">7:30 AM</strong><br>
+            ✅ Dietary requirements forwarded to catering<br>
+            ✅ Branded backdrop confirmed (3m × 2m)<br>
+            ✅ Security briefing: 5 April at 3:00 PM</p>
+            <p>Kindly revert with the finalised BEO by <strong style="color:var(--cream)">Friday, 4 April</strong>. All other arrangements remain as per our signed contract (Ref: SG-2025-GAL-01).</p>
+          </div>
+          <div class="email-sig">
+            <strong>Events &amp; Coordination · Spectlance Global</strong><br>
+            📞 +254 711 000 000 &nbsp;|&nbsp; 📧 events@spectlanceglobal.com
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 5: TEAMS ═══ -->
+  <section class="section" id="collab">
+    <div class="section-label">Microsoft Teams</div>
+    <div class="section-title">Collaboration &amp; Meeting Samples</div>
+    <div class="section-desc">Teams meeting summaries and action logs from client coordination calls.</div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#6264a7;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">T</div>
+          <span class="filename">Teams — Weekly Client Sync (01 Apr 2025)</span>
+        </div>
+        <div class="doc-body">
+          <div class="teams-topic">📅 Weekly Client Services Sync · ISON Global · 01 April 2025 · 10:00 AM EAT</div>
+          <div class="teams-card">
+            <div class="teams-row">
+              <div class="teams-avatar" style="background:#2b579a">JM</div>
+              <div class="teams-msg">
+                <div class="teams-name">Jane Mwangi (CS Coordinator)</div>
+                <div class="teams-text">Good morning team — let's start with a quick update on the Equity Bank onboarding. They've signed and we need to get their SharePoint portal set up by Thursday.</div>
+                <div class="teams-time">10:03 AM</div>
+              </div>
+            </div>
+            <div class="teams-row">
+              <div class="teams-avatar" style="background:#217346">KO</div>
+              <div class="teams-msg">
+                <div class="teams-name">Kevin Omondi (IT Support)</div>
+                <div class="teams-text">On it. I'll set up the document library and send Amina the access link by Wednesday EOD.</div>
+                <div class="teams-time">10:05 AM</div>
+              </div>
+            </div>
+            <div class="teams-row">
+              <div class="teams-avatar" style="background:#c9a84c;color:#0d1b2a">AM</div>
+              <div class="teams-msg">
+                <div class="teams-name">Alice Mutua (Account Manager)</div>
+                <div class="teams-text">Also flagging — Safaricom renewal is due in 60 days. Jane, can you get the renewal proposal drafted before the April 10th deadline?</div>
+                <div class="teams-time">10:08 AM</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--cream);margin-bottom:8px">✅ Action Items</div>
+            <div class="action-item"><div class="check check-done">✓</div><span>Set up Equity Bank SharePoint portal (Kevin · Wed)</span></div>
+            <div class="action-item"><div class="check check-done">✓</div><span>Draft Safaricom renewal proposal (Jane · Apr 10)</span></div>
+            <div class="action-item"><div class="check check-open"></div><span>Send post-event report to KCB Group (Jane · Apr 7)</span></div>
+            <div class="action-item"><div class="check check-open"></div><span>Update HubSpot pipeline with Q2 deals (Jane · Apr 4)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teams Calendar invite -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#6264a7;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">T</div>
+          <span class="filename">Client Kick-off Meeting Invite</span>
+          <span class="dot">·</span>
+          <span class="filename">Spectlance Global</span>
+        </div>
+        <div class="doc-body">
+          <div style="background:rgba(98,100,167,0.1);border:1px solid rgba(98,100,167,0.25);border-radius:6px;padding:16px">
+            <div style="font-size:16px;font-weight:700;color:var(--cream);margin-bottom:10px">📅 Kick-off Call: Spectlance × Equity Bank</div>
+            <div style="display:flex;flex-direction:column;gap:7px;font-size:12px;">
+              <div><span style="color:var(--text-muted);width:80px;display:inline-block">📅 Date:</span>Thursday, 10 April 2025</div>
+              <div><span style="color:var(--text-muted);width:80px;display:inline-block">🕙 Time:</span>10:00 AM – 11:00 AM EAT</div>
+              <div><span style="color:var(--text-muted);width:80px;display:inline-block">📍 Via:</span>Microsoft Teams (link attached)</div>
+              <div><span style="color:var(--text-muted);width:80px;display:inline-block">👥 Guests:</span>amina.hassan@equitybank.co.ke, team@spectlanceglobal.com</div>
+            </div>
+            <div style="margin-top:12px;font-size:12px">
+              <div style="font-weight:600;color:var(--cream);margin-bottom:6px">Agenda</div>
+              <div style="color:var(--text-body);line-height:1.8">
+                1. Introductions &amp; team overview<br>
+                2. Project scope &amp; timeline walkthrough<br>
+                3. SharePoint portal demo<br>
+                4. Communication cadence &amp; reporting<br>
+                5. Q&amp;A and next steps
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 6: REPORTING ═══ -->
+  <section class="section" id="reporting">
+    <div class="section-label">Power BI · Excel</div>
+    <div class="section-title">Reporting &amp; Analytics Samples</div>
+    <div class="section-desc">Monthly client services dashboards and performance KPIs compiled for management reporting.</div>
+    <div class="doc-grid">
+
+      <!-- Power BI Dashboard -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#f2c811;color:#333;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800">BI</div>
+          <span class="filename">Client Services Dashboard — Q1 2025</span>
+          <span class="dot">·</span>
+          <span class="filename">ISON Global</span>
+        </div>
+        <div class="doc-body">
+          <div class="kpi-row">
+            <div class="kpi">
+              <div class="kpi-val">23</div>
+              <div class="kpi-label">Active Clients</div>
+              <div class="kpi-delta delta-up">↑ +4 vs Q4</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-val">97%</div>
+              <div class="kpi-label">Contract Renewal</div>
+              <div class="kpi-delta delta-up">↑ +3pp</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-val">4.7</div>
+              <div class="kpi-label">CSAT Score /5</div>
+              <div class="kpi-delta delta-up">↑ +0.2</div>
+            </div>
+          </div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em">Events by Service Type</div>
+          <div class="bar-chart">
+            <div class="bar-row"><span class="bar-label">Corporate Events</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:linear-gradient(90deg,#217346,#2eb87a)"></div></div><span class="bar-val">18</span></div>
+            <div class="bar-row"><span class="bar-label">Webinars</span><div class="bar-track"><div class="bar-fill" style="width:64%;background:linear-gradient(90deg,#2b579a,#7db8e8)"></div></div><span class="bar-val">14</span></div>
+            <div class="bar-row"><span class="bar-label">Workshops</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:linear-gradient(90deg,#6264a7,#a9aae0)"></div></div><span class="bar-val">11</span></div>
+            <div class="bar-row"><span class="bar-label">Galas</span><div class="bar-track"><div class="bar-fill" style="width:27%;background:linear-gradient(90deg,#c9a84c,#e2c47a)"></div></div><span class="bar-val">6</span></div>
+            <div class="bar-row"><span class="bar-label">Team Away Days</span><div class="bar-track"><div class="bar-fill" style="width:18%;background:linear-gradient(90deg,#e05a5a,#f0a0a0)"></div></div><span class="bar-val">4</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Report Word -->
+      <div class="doc-card">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#2b579a;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">W</div>
+          <span class="filename">March_Monthly_Client_Report.docx</span>
+          <span class="dot">·</span>
+          <span class="filename">Spectlance Global</span>
+        </div>
+        <div class="doc-body">
+          <div class="word-doc">
+            <div class="w-heading">Monthly Client Services Report — March 2025</div>
+            <div class="w-subhead">Executive Summary</div>
+            <p>March 2025 marked a strong performance month for Spectlance Global's Client Services division, with all five scheduled events delivered on time and within budget. Client satisfaction averaged 4.7/5 across post-event surveys.</p>
+            <div class="w-subhead">Key Metrics</div>
+            <table class="w-table">
+              <thead><tr><th>Metric</th><th>Mar 2025</th><th>Feb 2025</th><th>Δ</th></tr></thead>
+              <tbody>
+                <tr><td>Events Delivered</td><td>5</td><td>4</td><td style="color:#2eb87a">+1</td></tr>
+                <tr><td>Contracts Renewed</td><td>3</td><td>2</td><td style="color:#2eb87a">+1</td></tr>
+                <tr><td>New Clients Onboarded</td><td>2</td><td>3</td><td style="color:#e05a5a">-1</td></tr>
+                <tr><td>NPS Score</td><td>72</td><td>68</td><td style="color:#2eb87a">+4</td></tr>
+                <tr><td>Response Time (avg)</td><td>2.1 hrs</td><td>3.4 hrs</td><td style="color:#2eb87a">-1.3h</td></tr>
+              </tbody>
+            </table>
+            <div class="w-subhead">Highlights</div>
+            <p>The KCB Group onboarding workshop received particularly strong feedback, with 95% of attendees rating logistics as "Excellent." The Equity Bank service agreement was signed ahead of schedule.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 7: SHAREPOINT ═══ -->
+  <section class="section" id="docs">
+    <div class="section-label">SharePoint · OneDrive</div>
+    <div class="section-title">Document Management &amp; Portals</div>
+    <div class="section-desc">Client-facing SharePoint portals and document libraries maintained for seamless information sharing.</div>
+    <div class="doc-grid">
+
+      <div class="doc-card wide">
+        <div class="doc-chrome">
+          <div class="app-ico" style="background:#0364b8;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white">S</div>
+          <span class="filename">SharePoint — Equity Bank Client Portal</span>
+          <span class="dot">·</span>
+          <span class="filename">ISON Global · Restricted Access</span>
+        </div>
+        <div class="doc-body">
+          <div class="sp-header">
+            <span class="sp-breadcrumb">ISON Global <span>›</span> Client Portals <span>›</span> Equity Bank <span>›</span> Active Documents</span>
+          </div>
+          <div class="wide-inner">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em">Contracts</div>
+              <div class="file-list">
+                <div class="file-row"><div class="file-ico" style="background:#2b579a">W</div><span class="file-name">Service_Agreement_Equity_v2.docx</span><span class="file-meta">Signed · Mar 31</span></div>
+                <div class="file-row"><div class="file-ico" style="background:#2b579a">W</div><span class="file-name">SOW_Events_Package_2025.docx</span><span class="file-meta">Active</span></div>
+                <div class="file-row"><div class="file-ico" style="background:#cc3333">P</div><span class="file-name">Signed_Contract_Equity_2025.pdf</span><span class="file-meta">Executed</span></div>
+              </div>
+              <div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-top:14px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em">Reports</div>
+              <div class="file-list">
+                <div class="file-row"><div class="file-ico" style="background:#2b579a">W</div><span class="file-name">Monthly_Report_Mar_2025.docx</span><span class="file-meta">Apr 1</span></div>
+                <div class="file-row"><div class="file-ico" style="background:#f2c811;color:#333">BI</div><span class="file-name">Q1_Dashboard_Equity.pbix</span><span class="file-meta">Power BI</span></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em">Events</div>
+              <div class="file-list">
+                <div class="file-row"><div class="file-ico" style="background:#217346">X</div><span class="file-name">Onboarding_Workshop_Tracker.xlsx</span><span class="file-meta">Mar 28</span></div>
+                <div class="file-row"><div class="file-ico" style="background:#2b579a">W</div><span class="file-name">Workshop_RunOfShow_Mar28.docx</span><span class="file-meta">Completed</span></div>
+                <div class="file-row"><div class="file-ico" style="background:#217346">X</div><span class="file-name">Post_Event_Responses_Mar28.xlsx</span><span class="file-meta">45 responses</span></div>
+              </div>
+              <div style="font-size:11px;font-weight:700;color:var(--text-muted);margin-top:14px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em">Onboarding</div>
+              <div class="file-list">
+                <div class="file-row"><div class="file-ico" style="background:#cc3333">P</div><span class="file-name">Welcome_Pack_Equity_Bank.pdf</span><span class="file-meta">Sent</span></div>
+                <div class="file-row"><div class="file-ico" style="background:#217346">X</div><span class="file-name">Project_Timeline_Equity.xlsx</span><span class="file-meta">Active</span></div>
+                <div class="file-row"><div class="file-ico" style="background:#2b579a">W</div><span class="file-name">Escalation_Matrix.docx</span><span class="file-meta">Ref doc</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>Portfolio compiled by <strong>ISON Global</strong> &amp; <strong>Spectlance Global</strong> · April 2025</div>
+  <div>Prepared for: Client Services Coordinator application · Vensure Employer Solutions</div>
+  <div style="color:rgba(138,155,176,0.5);font-size:10px">All client names used for illustrative purposes only.</div>
+</footer>
+
+</body>
+</html>

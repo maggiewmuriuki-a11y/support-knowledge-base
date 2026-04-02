@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margaret Muriuki — Client Services Coordinator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:      #090f16;
+  --ink-mid:  #0e1a27;
+  --ink-lg:   #142032;
+  --gold:     #c9a257;
+  --gold-lt:  #e2bf80;
+  --gold-dk:  #9a7a38;
+  --cream:    #f7f2ea;
+  --muted:    #607990;
+  --body:     #b8ccdc;
+  --line:     rgba(201,162,87,0.13);
+  --teal:     #2aa8a0;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Outfit', sans-serif; background:var(--ink); color:var(--body); overflow-x:hidden; }
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:24px 64px; transition:all 0.4s;
+}
+nav.stuck {
+  background:rgba(9,15,22,0.94); backdrop-filter:blur(18px);
+  padding:16px 64px; border-bottom:1px solid var(--line);
+}
+.nav-name {
+  font-family:'Cormorant Garamond', serif; font-size:17px; font-weight:600;
+  color:var(--gold-lt); letter-spacing:0.05em; text-decoration:none;
+}
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a {
+  font-size:13px; font-weight:500; color:var(--muted);
+  text-decoration:none; letter-spacing:0.03em; transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--cream); }
+.nav-hire {
+  background:var(--gold) !important; color:var(--ink) !important;
+  padding:9px 24px !important; border-radius:30px !important; font-weight:700 !important;
+  box-shadow:0 4px 20px rgba(201,162,87,0.25);
+  transition:background 0.2s, transform 0.2s !important;
+}
+.nav-hire:hover { background:var(--gold-lt) !important; transform:translateY(-1px); }
+@media(max-width:720px){
+  nav,nav.stuck{padding:18px 24px;}
+  .nav-links a:not(.nav-hire){display:none;}
+}
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  display:grid; grid-template-columns:1.1fr 0.9fr;
+  align-items:center; gap:60px;
+  padding:120px 64px 80px;
+  position:relative; overflow:hidden;
+}
+@media(max-width:900px){ .hero{grid-template-columns:1fr; padding:110px 24px 72px;} }
+
+.hero::before {
+  content:''; position:absolute; width:700px; height:700px; border-radius:50%;
+  top:-200px; right:-200px;
+  background:radial-gradient(circle, rgba(201,162,87,0.06), transparent 65%);
+  pointer-events:none;
+}
+.hero::after {
+  content:''; position:absolute; width:500px; height:500px; border-radius:50%;
+  bottom:-150px; left:-100px;
+  background:radial-gradient(circle, rgba(42,168,160,0.05), transparent 65%);
+  pointer-events:none;
+}
+
+.hero-left { position:relative; z-index:1; }
+
+.hero-status {
+  display:inline-flex; align-items:center; gap:9px;
+  background:rgba(42,168,160,0.1); border:1px solid rgba(42,168,160,0.25);
+  padding:7px 16px; border-radius:30px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+  color:#5dd6cf; margin-bottom:30px;
+  animation:fadeUp 0.7s ease both;
+}
+.pulse {
+  width:7px; height:7px; border-radius:50%; background:#2aa8a0; flex-shrink:0;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100%{ box-shadow:0 0 0 0 rgba(42,168,160,0.5); }
+  50%{ box-shadow:0 0 0 6px rgba(42,168,160,0); }
+}
+
+.hero-name {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(3rem, 5.5vw, 5.2rem); font-weight:700; line-height:1.05;
+  color:var(--cream); margin-bottom:10px;
+  animation:fadeUp 0.7s 0.08s ease both;
+}
+.hero-name span { color:var(--gold); }
+
+.hero-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(1.15rem,2.2vw,1.65rem); font-weight:300; font-style:italic;
+  color:var(--muted); margin-bottom:28px;
+  animation:fadeUp 0.7s 0.14s ease both;
+}
+
+.hero-bio {
+  font-size:15px; line-height:1.8; color:var(--muted);
+  max-width:500px; margin-bottom:36px;
+  animation:fadeUp 0.7s 0.2s ease both;
+}
+.hero-bio strong { color:var(--body); font-weight:500; }
+
+.hero-pills {
+  display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px;
+  animation:fadeUp 0.7s 0.26s ease both;
+}
+.pill {
+  padding:6px 15px;
+  background:rgba(201,162,87,0.08); border:1px solid rgba(201,162,87,0.2);
+  border-radius:20px; font-size:12px; font-weight:500; color:var(--gold-lt);
+}
+
+.hero-btns {
+  display:flex; gap:14px; flex-wrap:wrap;
+  animation:fadeUp 0.7s 0.32s ease both;
+}
+.btn-main {
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--gold); color:var(--ink);
+  font-size:14px; font-weight:700; padding:14px 32px; border-radius:40px;
+  text-decoration:none;
+  box-shadow:0 8px 28px rgba(201,162,87,0.25);
+  transition:background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-main:hover { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 14px 36px rgba(201,162,87,0.3); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:10px;
+  background:transparent; color:var(--body);
+  font-size:14px; font-weight:500; padding:14px 28px; border-radius:40px;
+  text-decoration:none; border:1px solid rgba(255,255,255,0.1);
+  transition:all 0.2s;
+}
+.btn-outline:hover { border-color:rgba(201,162,87,0.4); color:var(--gold-lt); transform:translateY(-2px); }
+
+/* avatar card */
+.hero-right {
+  position:relative; z-index:1; display:flex; justify-content:center;
+  animation:fadeUp 0.8s 0.1s ease both;
+}
+@media(max-width:900px){ .hero-right{ display:none; } }
+
+.avatar-card {
+  width:320px; background:var(--ink-mid); border:1px solid var(--line);
+  border-radius:20px; overflow:hidden;
+  box-shadow:0 32px 64px rgba(0,0,0,0.4);
+}
+.avatar-top {
+  height:190px;
+  background:linear-gradient(135deg, #142032, #0e1a27, rgba(201,162,87,0.08));
+  display:flex; align-items:center; justify-content:center; position:relative;
+}
+.avatar-top::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 30% 40%, rgba(201,162,87,0.08), transparent 55%),
+             radial-gradient(circle at 70% 70%, rgba(42,168,160,0.06), transparent 50%);
+}
+.avatar-initials {
+  width:88px; height:88px; border-radius:50%;
+  background:linear-gradient(135deg, var(--gold-dk), var(--gold));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond', serif; font-size:30px; font-weight:700; color:var(--ink);
+  position:relative; z-index:1; box-shadow:0 8px 32px rgba(201,162,87,0.35);
+}
+.avatar-body { padding:22px 24px; }
+.avatar-name {
+  font-family:'Cormorant Garamond', serif; font-size:1.25rem; font-weight:700;
+  color:var(--cream); margin-bottom:4px;
+}
+.avatar-role { font-size:12px; color:var(--muted); margin-bottom:16px; }
+.av-stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+.av-stat {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px; padding:9px; text-align:center;
+}
+.av-num { font-family:'Cormorant Garamond', serif; font-size:1.35rem; font-weight:700; color:var(--gold-lt); }
+.av-lbl { font-size:10px; color:var(--muted); margin-top:2px; }
+.av-loc { display:flex; align-items:center; gap:7px; font-size:12px; color:var(--muted); }
+.av-dot { width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+
+@keyframes fadeUp {
+  from{ opacity:0; transform:translateY(20px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ── TICKER ── */
+.ticker {
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  background:rgba(201,162,87,0.025); overflow:hidden; padding:14px 0;
+}
+.ticker-track { display:flex; gap:40px; width:max-content; animation:ticker 26s linear infinite; }
+.ticker-item {
+  display:flex; align-items:center; gap:10px;
+  font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--muted); white-space:nowrap;
+}
+.ticker-item::before { content:'◆'; font-size:7px; color:var(--gold); }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── WRAP ── */
+.wrap { max-width:1160px; margin:0 auto; padding:100px 64px; }
+@media(max-width:720px){ .wrap{ padding:70px 24px; } }
+.eyebrow {
+  font-family:'JetBrains Mono', monospace; font-size:10px; font-weight:500;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;
+}
+.heading {
+  font-family:'Cormorant Garamond', serif; font-size:clamp(2rem,3.8vw,3rem);
+  font-weight:600; color:var(--cream); line-height:1.12; margin-bottom:14px;
+}
+.heading em { font-style:italic; color:var(--gold); font-weight:300; }
+.sub-text { font-size:15px; color:var(--muted); line-height:1.75; max-width:500px; margin-bottom:56px; }
+
+/* ── NUMBERS ── */
+.nums-band {
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  background:linear-gradient(135deg, rgba(201,162,87,0.04), rgba(42,168,160,0.02));
+}
+.nums-inner {
+  max-width:1160px; margin:0 auto; padding:72px 64px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+@media(max-width:860px){ .nums-inner{grid-template-columns:1fr 1fr;} }
+.num-item {
+  padding:0 32px; text-align:center; border-right:1px solid var(--line);
+}
+.num-item:last-child { border-right:none; }
+@media(max-width:860px){
+  .num-item{ padding:24px 16px; }
+  .num-item:nth-child(2){ border-right:none; }
+  .num-item:nth-child(3){ border-right:1px solid var(--line); }
+}
+.num-val {
+  font-family:'Cormorant Garamond', serif; font-size:3rem; font-weight:700;
+  color:var(--cream); line-height:1; margin-bottom:8px;
+}
+.num-val sup { font-size:1.3rem; color:var(--gold); vertical-align:super; }
+.num-lbl { font-size:12px; color:var(--muted); line-height:1.55; }
+
+/* ── SERVICES ── */
+.svc-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+}
+@media(max-width:860px){ .svc-grid{grid-template-columns:1fr 1fr;} }
+@media(max-width:540px){ .svc-grid{grid-template-columns:1fr;} }
+
+.svc {
+  background:var(--ink-mid); border:1px solid var(--line);
+  border-radius:14px; padding:32px 26px;
+  position:relative; overflow:hidden;
+  transition:transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.svc:hover { transform:translateY(-5px); border-color:rgba(201,162,87,0.28); box-shadow:0 24px 48px rgba(0,0,0,0.3); }
+.svc::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at top left, rgba(201,162,87,0.04), transparent 55%);
+  pointer-events:none;
+}
+.svc-num {
+  font-family:'JetBrains Mono', monospace; font-size:10px;
+  color:rgba(201,162,87,0.35); letter-spacing:0.12em; margin-bottom:14px;
+}
+.svc-icon { font-size:24px; margin-bottom:14px; }
+.svc-title {
+  font-family:'Cormorant Garamond', serif; font-size:1.2rem; font-weight:700;
+  color:var(--cream); margin-bottom:9px;
+}
+.svc-desc { font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:14px; }
+.svc-list { display:flex; flex-direction:column; gap:5px; }
+.svc-list li {
+  font-size:12px; color:var(--body); list-style:none;
+  display:flex; align-items:center; gap:8px;
+}
+.svc-list li::before { content:'—'; color:var(--gold); font-size:10px; }
+
+/* ── TOOLS ── */
+.tools-bg { background:var(--ink-mid); border-top:1px solid var(--line); }
+.tools-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:52px; }
+@media(max-width:860px){ .tools-grid{grid-template-columns:1fr 1fr;} }
+
+.tool {
+  background:var(--ink); border:1px solid var(--line); border-radius:12px;
+  padding:20px 18px; display:flex; align-items:center; gap:14px;
+  transition:transform 0.25s, border-color 0.25s;
+}
+.tool:hover { transform:translateY(-3px); border-color:rgba(201,162,87,0.28); }
+.tool-ico {
+  width:40px; height:40px; border-radius:9px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:900; color:#fff;
+}
+.t-name { font-size:13px; font-weight:600; color:var(--cream); }
+.t-desc { font-size:11px; color:var(--muted); margin-top:2px; }
+.t-bar { height:3px; border-radius:2px; background:rgba(255,255,255,0.06); margin-top:9px; overflow:hidden; }
+.t-fill { height:100%; border-radius:2px; }
+
+/* skills bars */
+.skills-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px;
+}
+@media(max-width:720px){ .skills-row{grid-template-columns:1fr;} }
+.sk-block {
+  background:var(--ink); border:1px solid var(--line); border-radius:12px; padding:28px;
+}
+.sk-title {
+  font-family:'Cormorant Garamond', serif; font-size:1.1rem; font-weight:700;
+  color:var(--cream); margin-bottom:18px;
+}
+.sk-items { display:flex; flex-direction:column; gap:12px; }
+.sk-item {}
+.sk-label-row { display:flex; justify-content:space-between; margin-bottom:5px; }
+.sk-label { font-size:12px; color:var(--body); }
+.sk-pct { font-size:11px; color:var(--muted); font-family:'JetBrains Mono', monospace; }
+.sk-track { height:4px; border-radius:2px; background:rgba(255,255,255,0.06); overflow:hidden; }
+.sk-fill { height:100%; border-radius:2px; background:linear-gradient(90deg, var(--gold-dk), var(--gold)); }
+
+/* ── PROCESS ── */
+.process-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:56px; position:relative;
+}
+@media(max-width:720px){ .process-grid{grid-template-columns:1fr 1fr;} }
+.process-grid::before {
+  content:''; position:absolute; top:21px; left:11%; right:11%; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,162,87,0.2),rgba(201,162,87,0.2),transparent);
+}
+.step { padding:0 20px; text-align:center; }
+.step-bub {
+  width:42px; height:42px; border-radius:50%;
+  border:1px solid rgba(201,162,87,0.3); background:var(--ink-mid);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:500; color:var(--gold);
+  margin:0 auto 18px; position:relative; z-index:1;
+}
+.step-title { font-size:13px; font-weight:600; color:var(--cream); margin-bottom:7px; }
+.step-desc { font-size:12px; color:var(--muted); line-height:1.65; }
+
+/* ── CTA ── */
+.cta-section {
+  text-align:center; padding:120px 64px; position:relative; overflow:hidden;
+}
+@media(max-width:720px){ .cta-section{padding:80px 24px;} }
+.cta-glow {
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 55% 50% at 50% 50%, rgba(201,162,87,0.07),transparent);
+}
+.cta-section .eyebrow { margin-bottom:18px; }
+.cta-section .heading { font-size:clamp(2.2rem,4.5vw,3.6rem); margin-bottom:18px; }
+.cta-sub { font-size:15px; color:var(--muted); max-width:420px; margin:0 auto 44px; line-height:1.75; }
+.cta-btns { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.contact-chips {
+  display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:40px;
+}
+.c-chip {
+  display:flex; align-items:center; gap:8px;
+  font-size:13px; color:var(--muted); text-decoration:none; transition:color 0.2s;
+}
+.c-chip:hover { color:var(--gold-lt); }
+
+/* ── FOOTER ── */
+footer {
+  border-top:1px solid var(--line); padding:28px 64px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:12px; font-size:12px; color:var(--muted);
+}
+@media(max-width:720px){ footer{padding:24px; flex-direction:column; text-align:center;} }
+.footer-name {
+  font-family:'Cormorant Garamond', serif; font-size:15px;
+  font-weight:600; color:var(--gold-lt);
+}
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.65s ease, transform 0.65s ease; }
+.reveal.on { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-name">Margaret Muriuki</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#tools">Expertise</a>
+    <a href="#process">How I Work</a>
+    <a href="#contact" class="nav-hire">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-status"><span class="pulse"></span>Open to new opportunities</div>
+    <h1 class="hero-name">Margaret<br><span>Muriuki.</span></h1>
+    <p class="hero-title">Client Services Coordinator</p>
+    <p class="hero-bio">
+      I help organisations <strong>deliver seamless client experiences</strong> — coordinating events from first brief to final report, managing contracts end-to-end, and keeping relationships strong through <strong>CRM discipline and clear communication.</strong>
+    </p>
+    <div class="hero-pills">
+      <span class="pill">Event Coordination</span>
+      <span class="pill">Contract Management</span>
+      <span class="pill">HubSpot CRM</span>
+      <span class="pill">Microsoft 365</span>
+      <span class="pill">Remote-Ready</span>
+    </div>
+    <div class="hero-btns">
+      <a href="portfolio_client_services.html" target="_blank" class="btn-main">
+        View Work Samples
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#contact" class="btn-outline">Get in Touch ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="avatar-card">
+      <div class="avatar-top">
+        <div class="avatar-initials">MM</div>
+      </div>
+      <div class="avatar-body">
+        <div class="avatar-name">Margaret Muriuki</div>
+        <div class="avatar-role">Client Services Coordinator · Nairobi, KE</div>
+        <div class="av-stats">
+          <div class="av-stat"><div class="av-num">50+</div><div class="av-lbl">Events delivered</div></div>
+          <div class="av-stat"><div class="av-num">97%</div><div class="av-lbl">Renewal rate</div></div>
+          <div class="av-stat"><div class="av-num">4.7</div><div class="av-lbl">CSAT score /5</div></div>
+          <div class="av-stat"><div class="av-num">2h</div><div class="av-lbl">Response time</div></div>
+        </div>
+        <div class="av-loc"><span class="av-dot"></span>Nairobi, Kenya · Available remotely</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Event Coordination</span>
+    <span class="ticker-item">Contract Management</span>
+    <span class="ticker-item">HubSpot CRM</span>
+    <span class="ticker-item">Client Onboarding</span>
+    <span class="ticker-item">Microsoft 365</span>
+    <span class="ticker-item">Stakeholder Communication</span>
+    <span class="ticker-item">Power BI Reporting</span>
+    <span class="ticker-item">SharePoint Portals</span>
+    <span class="ticker-item">Remote Collaboration</span>
+    <span class="ticker-item">Event Coordination</span>
+    <span class="ticker-item">Contract Management</span>
+    <span class="ticker-item">HubSpot CRM</span>
+    <span class="ticker-item">Client Onboarding</span>
+    <span class="ticker-item">Microsoft 365</span>
+    <span class="ticker-item">Stakeholder Communication</span>
+    <span class="ticker-item">Power BI Reporting</span>
+    <span class="ticker-item">SharePoint Portals</span>
+    <span class="ticker-item">Remote Collaboration</span>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div class="nums-band">
+  <div class="nums-inner reveal">
+    <div class="num-item">
+      <div class="num-val" data-to="50" data-suffix="+">0</div>
+      <div class="num-lbl">Corporate events<br>delivered on time</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val" data-to="97" data-suffix="%">0</div>
+      <div class="num-lbl">Client contract<br>renewal rate</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val" data-to="4.7" data-suffix="/5" data-dec="1">0</div>
+      <div class="num-lbl">Average client<br>satisfaction score</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val" data-to="2" data-suffix="h">0</div>
+      <div class="num-lbl">Average client<br>response time</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="wrap" id="services">
+  <div class="reveal">
+    <div class="eyebrow">What I offer</div>
+    <h2 class="heading">Services built around<br><em>your clients</em></h2>
+    <p class="sub-text">I step in wherever client relationships need structure, care, and follow-through — so nothing slips through the cracks.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc reveal">
+      <div class="svc-num">01</div><div class="svc-icon">🗓️</div>
+      <div class="svc-title">Event Coordination</div>
+      <p class="svc-desc">Full-cycle planning and delivery of corporate events — from logistics call to post-event debrief.</p>
+      <ul class="svc-list">
+        <li>Venue & vendor management</li>
+        <li>Run-of-show scheduling</li>
+        <li>Budget tracking in Excel</li>
+        <li>Attendee management & feedback</li>
+      </ul>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">02</div><div class="svc-icon">📄</div>
+      <div class="svc-title">Contract Management</div>
+      <p class="svc-desc">Drafting, tracking, and renewing service agreements — keeping every commitment visible and on schedule.</p>
+      <ul class="svc-list">
+        <li>Agreement drafting & review</li>
+        <li>Active contracts tracker</li>
+        <li>Renewal SOPs & workflows</li>
+        <li>Milestone & payment tracking</li>
+      </ul>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">03</div><div class="svc-icon">🔗</div>
+      <div class="svc-title">CRM Management</div>
+      <p class="svc-desc">Maintaining clean, actionable pipelines in HubSpot so your team always knows where every client stands.</p>
+      <ul class="svc-list">
+        <li>Pipeline setup & hygiene</li>
+        <li>Contact & deal management</li>
+        <li>Activity logging & follow-ups</li>
+        <li>CRM reporting & insights</li>
+      </ul>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">04</div><div class="svc-icon">✉️</div>
+      <div class="svc-title">Client Communication</div>
+      <p class="svc-desc">Professional, timely correspondence that keeps clients informed and builds long-term trust.</p>
+      <ul class="svc-list">
+        <li>Onboarding welcome packs</li>
+        <li>Status updates & escalations</li>
+        <li>Calendar & scheduling (Outlook)</li>
+        <li>Teams meeting facilitation</li>
+      </ul>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">05</div><div class="svc-icon">🗂️</div>
+      <div class="svc-title">Document Management</div>
+      <p class="svc-desc">Organised SharePoint portals and document libraries that give clients easy access to everything they need.</p>
+      <ul class="svc-list">
+        <li>SharePoint portal builds</li>
+        <li>Structured document libraries</li>
+        <li>Access & permissions control</li>
+        <li>Version control & filing</li>
+      </ul>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-num">06</div><div class="svc-icon">📊</div>
+      <div class="svc-title">Reporting & Analytics</div>
+      <p class="svc-desc">Monthly client reports and dashboards that turn raw data into clear, decision-ready insights.</p>
+      <ul class="svc-list">
+        <li>Power BI dashboards</li>
+        <li>Monthly performance reports</li>
+        <li>CSAT & NPS tracking</li>
+        <li>Excel pivot summaries</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools-bg" id="tools">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Technical expertise</div>
+      <h2 class="heading">Fluent in <em>Microsoft 365</em><br>& the tools that matter</h2>
+      <p class="sub-text">Deep, hands-on experience with the full Microsoft ecosystem and HubSpot CRM — exactly what modern client services teams depend on.</p>
+    </div>
+    <div class="tools-grid reveal">
+      <div class="tool">
+        <div class="tool-ico" style="background:#217346">X</div>
+        <div><div class="t-name">Excel</div><div class="t-desc">Trackers · Budgets · Pivots</div>
+        <div class="t-bar"><div class="t-fill" style="width:92%;background:linear-gradient(90deg,#1a5c38,#2eb87a)"></div></div></div>
+      </div>
+      <div class="tool">
+        <div class="tool-ico" style="background:#2b579a">W</div>
+        <div><div class="t-name">Word</div><div class="t-desc">Contracts · Reports · SOPs</div>
+        <div class="t-bar"><div class="t-fill" style="width:95%;background:linear-gradient(90deg,#1a3a6e,#7db8e8)"></div></div></div>
+      </div>
+      <div class="tool">
+        <div class="tool-ico" style="background:#0078d4">O</div>
+        <div><div class="t-name">Outlook</div><div class="t-desc">Email · Calendar · Tasks</div>
+        <div class="t-bar"><div class="t-fill" style="width:95%;background:linear-gradient(90deg,#0050a0,#4ba6e8)"></div></div></div>
+      </div>
+      <div class="tool">
+        <div class="tool-ico" style="background:#6264a7">T</div>
+        <div><div class="t-name">Teams</div><div class="t-desc">Meetings · Channels · Notes</div>
+        <div class="t-bar"><div class="t-fill" style="width:88%;background:linear-gradient(90deg,#404278,#a9aae0)"></div></div></div>
+      </div>
+      <div class="tool">
+        <div class="tool-ico" style="background:#0364b8">S</div>
+        <div><div class="t-name">SharePoint</div><div class="t-desc">Portals · Libraries · Access</div>
+        <div class="t-bar"><div class="t-fill" style="width:85%;background:linear-gradient(90deg,#024080,#5ba4d4)"></div></div></div>
+      </div>
+      <div class="tool">
+        <div class="tool-ico" style="background:#ff7a59">H</div>
+        <div><div class="t-name">HubSpot</div><div class="t-desc">CRM · Pipeline · Contacts</div>
+        <div class="t-bar"><div class="t-fill" style="width:90%;background:linear-gradient(90deg,#cc3300,#ffaa90)"></div></div></div>
+      </div>
+      <div class="tool">
+        <div class="tool-ico" style="background:#c9a000;color:#1a1000">BI</div>
+        <div><div class="t-name">Power BI</div><div class="t-desc">Dashboards · KPIs</div>
+        <div class="t-bar"><div class="t-fill" style="width:78%;background:linear-gradient(90deg,#907000,#f2c811)"></div></div></div>
+      </div>
+      <div class="tool">
+        <div class="tool-ico" style="background:#c43232">F</div>
+        <div><div class="t-name">MS Forms</div><div class="t-desc">Surveys · Registrations</div>
+        <div class="t-bar"><div class="t-fill" style="width:88%;background:linear-gradient(90deg,#902020,#f08080)"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skills-row reveal">
+      <div class="sk-block">
+        <div class="sk-title">Communication & Coordination</div>
+        <div class="sk-items">
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Client Communication</span><span class="sk-pct">96%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:96%"></div></div>
+          </div>
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Stakeholder Management</span><span class="sk-pct">92%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:92%"></div></div>
+          </div>
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Meeting Facilitation</span><span class="sk-pct">90%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:90%"></div></div>
+          </div>
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Remote Collaboration</span><span class="sk-pct">94%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:94%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sk-block">
+        <div class="sk-title">Organisation & Delivery</div>
+        <div class="sk-items">
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Event Project Management</span><span class="sk-pct">93%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:93%"></div></div>
+          </div>
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Contract Administration</span><span class="sk-pct">91%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:91%"></div></div>
+          </div>
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Data & Reporting</span><span class="sk-pct">87%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:87%"></div></div>
+          </div>
+          <div class="sk-item">
+            <div class="sk-label-row"><span class="sk-label">Attention to Detail</span><span class="sk-pct">97%</span></div>
+            <div class="sk-track"><div class="sk-fill" style="width:97%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section class="wrap" id="process">
+  <div class="reveal">
+    <div class="eyebrow">How I work</div>
+    <h2 class="heading">Structured, <em>consistent,</em><br>client-first</h2>
+    <p class="sub-text">Every engagement I take on follows the same disciplined process — so your clients always feel looked after.</p>
+  </div>
+  <div class="process-grid reveal">
+    <div class="step">
+      <div class="step-bub">01</div>
+      <div class="step-title">Understand & Align</div>
+      <p class="step-desc">I start by learning your client, your goals, and your tools — then set up CRM records, portals, and timelines fast.</p>
+    </div>
+    <div class="step">
+      <div class="step-bub">02</div>
+      <div class="step-title">Plan & Document</div>
+      <p class="step-desc">Every project gets a clear plan in Word or Excel — shared via Teams or SharePoint before any action starts.</p>
+    </div>
+    <div class="step">
+      <div class="step-bub">03</div>
+      <div class="step-title">Execute & Update</div>
+      <p class="step-desc">I coordinate in real time, keep HubSpot updated, reply within 2 hours, and proactively flag anything needing attention.</p>
+    </div>
+    <div class="step">
+      <div class="step-bub">04</div>
+      <div class="step-title">Report & Improve</div>
+      <p class="step-desc">Post-delivery reports, feedback forms, and dashboard updates close every cycle — and feed directly into the next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <div class="eyebrow">Let's connect</div>
+  <h2 class="heading" style="font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:16px;">Ready to work<br><em>together?</em></h2>
+  <p class="cta-sub">I'm currently open to new roles. If you're looking for a detail-driven Client Services Coordinator, I'd love to hear from you.</p>
+  <div class="cta-btns">
+    <a href="portfolio_client_services.html" target="_blank" class="btn-main">
+      View My Portfolio
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="mailto:margaret.muriuki@email.com" class="btn-outline">Send Me an Email</a>
+  </div>
+  <div class="contact-chips">
+    <a href="mailto:margaret.muriuki@email.com" class="c-chip">✉️ &nbsp;margaret.muriuki@email.com</a>
+    <a href="tel:+254700000000" class="c-chip">📞 &nbsp;+254 700 000 000</a>
+    <span class="c-chip">📍 &nbsp;Nairobi, Kenya · Remote-ready</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Margaret Muriuki</div>
+  <div>Client Services Coordinator · Nairobi, Kenya</div>
+  <div>© 2025</div>
+</footer>
+
+<script>
+// Nav stick
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 60));
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('on');
+    const children = e.target.querySelectorAll('.svc, .tool, .step, .sk-item');
+    children.forEach((c, i) => {
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(16px)';
+      c.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, i * 70);
+    });
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Counters
+function runCounters() {
+  document.querySelectorAll('[data-to]').forEach(el => {
+    const to = parseFloat(el.dataset.to);
+    const suffix = el.dataset.suffix || '';
+    const dec = parseInt(el.dataset.dec || '0');
+    let start = null;
+    const dur = 1500;
+    (function step(ts) {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = (to * ease).toFixed(dec) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  });
+}
+const numsObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { runCounters(); numsObs.disconnect(); }
+}, { threshold: 0.4 });
+const nb = document.querySelector('.nums-band');
+if (nb) numsObs.observe(nb);
+</script>
+</body>
+</html>
