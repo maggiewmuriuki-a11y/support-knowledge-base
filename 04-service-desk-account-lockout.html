@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Service Desk Scenario – Account Lockout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+    }
+    h1, h2, h3, h4 {
+      color: #2c3e50;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    hr {
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎫 Service Desk Scenario: Account Lockout After Failed Login Attempts</h1>
+
+<p>
+<strong>Ticket ID:</strong> INC-20250219-011<br>
+<strong>Date Logged:</strong> 19 February 2025<br>
+<strong>Priority:</strong> Medium<br>
+<strong>Status:</strong> Resolved<br>
+<strong>Category:</strong> Identity & Access Management — Account Lockout<br>
+<strong>Assigned To:</strong> Margaret Muriuki, IT Support Specialist<br>
+<strong>SLA Breach:</strong> No — Resolved within 2 hours
+</p>
+
+<hr>
+
+<h2>🧾 Ticket Summary</h2>
+
+<p>
+<strong>User:</strong> Lydia Kamau, HR Coordinator<br>
+<strong>Department:</strong> Human Resources<br>
+<strong>Contact:</strong> l.kamau@company.com | Ext. 318<br>
+<strong>Reported Via:</strong> ServiceNow Self-Service Portal
+</p>
+
+<p><strong>User-Reported Issue:</strong></p>
+<blockquote>
+"I have been locked out of my account. I tried logging in several times this morning and now I get a message saying my account has been locked. I have an important HR meeting in 2 hours."
+</blockquote>
+
+<hr>
+
+<h2>🔍 Initial Assessment</h2>
+
+<ul>
+  <li>User returned from annual leave (1 week off)</li>
+  <li>Multiple failed login attempts</li>
+  <li>Account locked after 5 attempts</li>
+  <li>Password likely expired during leave</li>
+</ul>
+
+<p><strong>Impact:</strong> User locked out of Microsoft 365 (Outlook, Teams, HR system). Time-sensitive due to meeting.</p>
+
+<hr>
+
+<h2>🛠️ Investigation Steps</h2>
+
+<h3>Step 1: Verify Identity</h3>
+<ul>
+  <li>Verified via employee ID and date of birth</li>
+  <li>Confirmed in Entra ID admin center</li>
+</ul>
+
+<h3>Step 2: Check Account Status</h3>
+<ul>
+  <li>Status: Locked</li>
+  <li>Last login: 10 Feb 2025</li>
+  <li>Password last changed: 11 Nov 2024</li>
+  <li>Password expired: 11 Feb 2025</li>
+</ul>
+
+<h3>Step 3: Unlock Account</h3>
+<ul>
+  <li>Unlocked via Entra Admin Center</li>
+  <li>Status updated to Active</li>
+</ul>
+
+<h3>Step 4: Reset Password</h3>
+<ul>
+  <li>Forced password reset enabled</li>
+  <li>Temporary password sent securely</li>
+</ul>
+
+<h3>Step 5: Guide User</h3>
+<ul>
+  <li>Login via portal.office.com</li>
+  <li>Create new compliant password</li>
+  <li>Complete MFA</li>
+  <li>Confirm system access</li>
+</ul>
+
+<h3>Step 6: Confirm Resolution</h3>
+<ul>
+  <li>User logged in successfully</li>
+  <li>Access to Outlook, Teams, HR system confirmed</li>
+</ul>
+
+<hr>
+
+<h2>✅ Resolution</h2>
+
+<p>
+<strong>Summary:</strong> Account unlocked and password reset. Full access restored within 1 hour 38 minutes (within SLA).
+</p>
+
+<p>
+<strong>Root Cause:</strong> Password expired during leave, leading to repeated failed login attempts and account lockout.
+</p>
+
+<hr>
+
+<h2>📋 Actions Taken</h2>
+
+<table>
+<tr>
+  <th>Action</th>
+  <th>Status</th>
+</tr>
+<tr>
+  <td>Identity verified</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Account unlocked</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Password reset</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>User guided</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Access confirmed</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Ticket closed</td>
+  <td>Complete</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>📌 Preventive Recommendations</h2>
+
+<ul>
+  <li>Enable password expiry reminders</li>
+  <li>Coordinate with HR for returning staff</li>
+  <li>Enable Self-Service Password Reset (SSPR)</li>
+  <li>Educate users on password policies</li>
+</ul>
+
+<hr>
+
+<h2>📝 Communication Log</h2>
+
+<table>
+<tr>
+  <th>Time</th>
+  <th>Action</th>
+</tr>
+<tr>
+  <td>09:04 AM</td>
+  <td>Ticket submitted</td>
+</tr>
+<tr>
+  <td>09:15 AM</td>
+  <td>Picked up ticket</td>
+</tr>
+<tr>
+  <td>09:20 AM</td>
+  <td>Identity verified</td>
+</tr>
+<tr>
+  <td>09:35 AM</td>
+  <td>Account unlocked</td>
+</tr>
+<tr>
+  <td>09:40 AM</td>
+  <td>Password reset support</td>
+</tr>
+<tr>
+  <td>10:42 AM</td>
+  <td>Access restored</td>
+</tr>
+<tr>
+  <td>10:50 AM</td>
+  <td>Ticket closed</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>📧 Closure Email</h2>
+
+<blockquote>
+<strong>Subject:</strong> RE: INC-20250219-011 – Account Access Restored<br><br>
+
+Hi Lydia,<br><br>
+
+Your account has been successfully unlocked and your password has been reset.
+You should now have full access to all your systems.<br><br>
+
+You will receive reminder emails before your password expires. You can also use:
+https://aka.ms/sspr<br><br>
+
+Kind regards,<br>
+Margaret Muriuki<br>
+IT Support Specialist
+</blockquote>
+
+<hr>
+
+<h3>🔗 Related Pages</h3>
+<ul>
+  <li><a href="01-client-onboarding-workflow.html">Client Onboarding Workflow</a></li>
+  <li><a href="02-event-coordination-workflow.html">Event Coordination Workflow</a></li>
+</ul>
+
+</body>
+</html>
