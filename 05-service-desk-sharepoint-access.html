@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Service Desk Scenario – SharePoint Access Denied</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+    }
+    h1, h2, h3, h4 {
+      color: #2c3e50;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    hr {
+      margin: 30px 0;
+    }
+    blockquote {
+      background: #f9f9f9;
+      padding: 10px;
+      border-left: 4px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎫 Service Desk Scenario: SharePoint Access Denied – Conditional Access Block</h1>
+
+<p>
+<strong>Ticket ID:</strong> INC-20250305-022<br>
+<strong>Date Logged:</strong> 5 March 2025<br>
+<strong>Priority:</strong> High<br>
+<strong>Status:</strong> Resolved<br>
+<strong>Category:</strong> Identity & Access Management — Conditional Access<br>
+<strong>Assigned To:</strong> Margaret Muriuki, IT Support Specialist<br>
+<strong>SLA Breach:</strong> No — Resolved within 3 hours
+</p>
+
+<hr>
+
+<h2>🧾 Ticket Summary</h2>
+
+<p>
+<strong>User:</strong> David Njoroge, Operations Manager<br>
+<strong>Department:</strong> Operations<br>
+<strong>Contact:</strong> d.njoroge@company.com | Ext. 501<br>
+<strong>Reported Via:</strong> Phone — escalated to ServiceNow
+</p>
+
+<p><strong>User-Reported Issue:</strong></p>
+<blockquote>
+"I am trying to access our SharePoint documents from my home laptop and I keep getting an error that says 'You don't have access to this content' or 'Your device does not meet compliance requirements.'"
+</blockquote>
+
+<hr>
+
+<h2>🔍 Initial Assessment</h2>
+
+<ul>
+  <li>User working remotely</li>
+  <li>Using personal (non-company) laptop</li>
+  <li>Conditional Access policy rolled out on 3 March 2025</li>
+  <li>Error: AADSTS53003 (blocked by policy)</li>
+</ul>
+
+<p><strong>Impact:</strong> High — unable to access SharePoint for urgent report.</p>
+
+<hr>
+
+<h2>🛠️ Investigation Steps</h2>
+
+<h3>Step 1: Verify Identity & Account</h3>
+<ul>
+  <li>Identity verified</li>
+  <li>Account active, MFA enabled</li>
+  <li>Sign-in logs confirm AADSTS53003 error</li>
+</ul>
+
+<h3>Step 2: Review Sign-In Logs</h3>
+<ul>
+  <li>Error: AADSTS53003</li>
+  <li>Reason: Device not compliant</li>
+  <li>Policy: Require compliant device for SharePoint</li>
+</ul>
+
+<h3>Step 3: Confirm Policy Scope</h3>
+<ul>
+  <li>Devices must be Entra ID joined</li>
+  <li>Devices must be compliant (Intune)</li>
+  <li>User device not enrolled</li>
+</ul>
+
+<h3>Step 4: Workaround Options</h3>
+<ul>
+  <li><strong>Option A:</strong> Use company laptop (selected)</li>
+  <li><strong>Option B:</strong> Temporary browser exception</li>
+</ul>
+
+<h3>Step 5: Confirm Access</h3>
+<ul>
+  <li>User switched to company device</li>
+  <li>Device compliant</li>
+  <li>Access successful</li>
+</ul>
+
+<h3>Step 6: Long-Term Recommendation</h3>
+<ul>
+  <li>Consider enrolling personal devices in Intune</li>
+</ul>
+
+<hr>
+
+<h2>✅ Resolution</h2>
+
+<p>
+<strong>Summary:</strong> Access restored using compliant company device within 2 hours 51 minutes.
+</p>
+
+<p>
+<strong>Root Cause:</strong> Conditional Access policy blocking non-compliant personal devices.
+</p>
+
+<hr>
+
+<h2>📋 Actions Taken</h2>
+
+<table>
+<tr>
+  <th>Action</th>
+  <th>Status</th>
+</tr>
+<tr>
+  <td>Identity verified</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Logs reviewed</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Policy confirmed</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>User switched device</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Access restored</td>
+  <td>Complete</td>
+</tr>
+<tr>
+  <td>Ticket closed</td>
+  <td>Complete</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>📌 Preventive Recommendations</h2>
+
+<ul>
+  <li>Communicate policy changes in advance</li>
+  <li>Enable personal device enrollment</li>
+  <li>Add knowledge base article</li>
+  <li>Brief managers on policy changes</li>
+</ul>
+
+<hr>
+
+<h2>📝 Communication Log</h2>
+
+<table>
+<tr>
+  <th>Time</th>
+  <th>Action</th>
+</tr>
+<tr>
+  <td>08:52 AM</td>
+  <td>Ticket logged</td>
+</tr>
+<tr>
+  <td>09:00 AM</td>
+  <td>User contacted</td>
+</tr>
+<tr>
+  <td>09:15 AM</td>
+  <td>Root cause identified</td>
+</tr>
+<tr>
+  <td>10:05 AM</td>
+  <td>User switched device</td>
+</tr>
+<tr>
+  <td>11:43 AM</td>
+  <td>Access confirmed</td>
+</tr>
+<tr>
+  <td>11:55 AM</td>
+  <td>Ticket closed</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>📧 Closure Email</h2>
+
+<blockquote>
+<strong>Subject:</strong> RE: INC-20250305-022 – SharePoint Access Restored<br><br>
+
+Hi David,<br><br>
+
+Your SharePoint access has been restored on your company device.<br><br>
+
+A new security policy requires devices to be compliant. Please use your company laptop moving forward.<br><br>
+
+Kind regards,<br>
+Margaret Muriuki<br>
+IT Support Specialist
+</blockquote>
+
+<hr>
+
+<h3>🔗 Related Pages</h3>
+<ul>
+  <li><a href="01-client-onboarding-workflow.html">Client Onboarding Workflow</a></li>
+  <li><a href="02-event-coordination-workflow.html">Event Coordination Workflow</a></li>
+  <li><a href="03-account-lockout-scenario.html">Account Lockout Scenario</a></li>
+</ul>
+
+</body>
+</html>
