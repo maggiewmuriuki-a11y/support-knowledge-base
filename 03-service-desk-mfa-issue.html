@@ -1,232 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Event Coordination Workflow</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 40px;
-    }
-    h1, h2, h3, h4 {
-      color: #2c3e50;
-    }
-    ul {
-      margin-bottom: 20px;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-    }
-    th {
-      background-color: #f4f4f4;
-    }
-    hr {
-      margin: 30px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Desk Scenario: MFA Authentication Failure</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1, h2, h3 { color: #2c3e50; }
+        .section { margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .status { font-weight: bold; color: green; }
+        .highlight { background-color: #f9f9f9; padding: 10px; border-left: 4px solid #3498db; }
+    </style>
 </head>
-
 <body>
 
-<h1>📅 Event Coordination Workflow</h1>
+<h1>🎫 Service Desk Scenario: MFA Authentication Failure</h1>
 
-<p>
-<strong>Document Type:</strong> Operations Workflow<br>
-<strong>Category:</strong> Event Coordination<br>
-<strong>Version:</strong> 1.0<br>
-<strong>Last Updated:</strong> February 2025<br>
-<strong>Author:</strong> Margaret Muriuki, Client Services Coordinator
-</p>
-
-<hr>
-
-<h2>📌 Overview</h2>
-<p>
-This document provides a structured workflow for planning and executing company events,
-including client meetings, webinars, and internal team engagements. It ensures all events
-run smoothly, on time, and within scope.
-</p>
-
-<h3>Applicable Events:</h3>
-<ul>
-  <li>Client onboarding sessions</li>
-  <li>Quarterly business reviews (QBRs)</li>
-  <li>Internal team meetings and trainings</li>
-  <li>Webinars and virtual workshops</li>
-</ul>
+<p><strong>Ticket ID:</strong> INC-20250312-004<br>
+<strong>Date Logged:</strong> 12 March 2025<br>
+<strong>Priority:</strong> High<br>
+<strong>Status:</strong> <span class="status">Resolved</span><br>
+<strong>Category:</strong> Identity & Access Management<br>
+<strong>Assigned To:</strong> Margaret Muriuki, IT Support Specialist<br>
+<strong>SLA Breach:</strong> No — Resolved within 4 hours</p>
 
 <hr>
 
-<h2>🗓️ Phase 1: Event Planning (4–6 Weeks Before)</h2>
+<h2>🧾 Ticket Summary</h2>
+<p><strong>User:</strong> James Omondi, Senior Finance Officer<br>
+<strong>Department:</strong> Finance<br>
+<strong>Contact:</strong> j.omondi@company.com | Ext. 204<br>
+<strong>Reported Via:</strong> Phone → Logged in ServiceNow</p>
 
-<h4>1.1 Define the Event</h4>
+<div class="highlight">
+<strong>User-Reported Issue:</strong>
+<p>"I cannot log into my work account this morning. After entering my password, it asks for an MFA code but my authenticator app is not generating any codes."</p>
+</div>
+
+<h2>🔍 Initial Assessment</h2>
 <ul>
-  <li>Confirm event purpose, audience, and expected outcomes</li>
-  <li>Determine event format: in-person / virtual / hybrid</li>
-  <li>Set target date and time</li>
-  <li>Create SharePoint folder</li>
+    <li>Issue started after user got a new phone</li>
+    <li>Old phone was factory reset — Authenticator not backed up</li>
+    <li>Password is correct but MFA step fails</li>
+    <li>User working remotely with urgent deadline</li>
 </ul>
 
-<h4>1.2 Planning Tracker</h4>
+<p><strong>Impact:</strong> User locked out of Microsoft 365 (Outlook, Teams, finance system).</p>
 
+<h2>🛠️ Investigation Steps</h2>
+
+<h3>Step 1: Verify User Identity</h3>
+<ul>
+    <li>Verified via employee ID and security question</li>
+    <li>Confirmed with line manager</li>
+    <li>Checked Entra ID — account active</li>
+</ul>
+
+<h3>Step 2: Check MFA Registration</h3>
+<ul>
+    <li>Authenticator linked to old device</li>
+    <li>No backup method configured</li>
+</ul>
+
+<h3>Step 3: Temporary Access</h3>
+<ul>
+    <li>Issued Temporary Access Pass (TAP)</li>
+    <li>Validity: 1 hour, single use</li>
+    <li>Shared securely via Teams</li>
+</ul>
+
+<h3>Step 4: MFA Re-Registration</h3>
+<ol>
+    <li>Installed Microsoft Authenticator</li>
+    <li>Visited https://aka.ms/mfasetup</li>
+    <li>Added Authenticator App</li>
+    <li>Scanned QR code</li>
+    <li>Completed test authentication</li>
+</ol>
+
+<h3>Step 5: Verification</h3>
+<ul>
+    <li>Login successful</li>
+    <li>Access to systems restored</li>
+    <li>TAP expired</li>
+</ul>
+
+<h2>✅ Resolution</h2>
+<p><strong>Summary:</strong> MFA re-registered using TAP. Access restored within <strong>3 hours 42 minutes</strong>.</p>
+<p><strong>Root Cause:</strong> Phone replaced without backup MFA or alternate method.</p>
+
+<h2>📋 Actions Taken</h2>
 <table>
-<tr>
-  <th>Item</th>
-  <th>Owner</th>
-  <th>Deadline</th>
-  <th>Status</th>
-</tr>
-<tr>
-  <td>Venue/Platform booking</td>
-  <td>Coordinator</td>
-  <td>Week 1</td>
-  <td>Done</td>
-</tr>
-<tr>
-  <td>Agenda draft</td>
-  <td>Manager</td>
-  <td>Week 2</td>
-  <td>In Progress</td>
-</tr>
-<tr>
-  <td>Invitations sent</td>
-  <td>Coordinator</td>
-  <td>Week 2</td>
-  <td>Pending</td>
-</tr>
-<tr>
-  <td>Materials prepared</td>
-  <td>Presenter</td>
-  <td>Week 3</td>
-  <td>Pending</td>
-</tr>
-<tr>
-  <td>Tech check</td>
-  <td>IT Support</td>
-  <td>Week 4</td>
-  <td>Pending</td>
-</tr>
+    <tr><th>Action</th><th>Status</th></tr>
+    <tr><td>Identity verified</td><td>Complete</td></tr>
+    <tr><td>TAP issued</td><td>Complete</td></tr>
+    <tr><td>MFA re-registered</td><td>Complete</td></tr>
+    <tr><td>User access confirmed</td><td>Complete</td></tr>
+    <tr><td>TAP expired</td><td>Complete</td></tr>
+    <tr><td>Ticket closed</td><td>Complete</td></tr>
 </table>
 
-<hr>
-
-<h2>📧 Phase 2: Communication & Invitations (3 Weeks Before)</h2>
-
-<h4>Send Invitations</h4>
+<h2>📌 Preventive Recommendations</h2>
 <ul>
-  <li>Draft invitation email</li>
-  <li>Send via Outlook with calendar invite</li>
-  <li>Log invitees in HubSpot</li>
+    <li>Encourage backup MFA methods</li>
+    <li>Require MFA backup during onboarding</li>
+    <li>Send reminders before device changes</li>
 </ul>
 
-<h4>Track RSVPs</h4>
-<ul>
-  <li>Update RSVP tracker</li>
-  <li>Send reminders to non-responders</li>
-  <li>Confirm final attendee count</li>
-</ul>
-
-<hr>
-
-<h2>🔧 Phase 3: Pre-Event Preparation (1 Week Before)</h2>
-
-<h4>Logistics Confirmation</h4>
-<ul>
-  <li>Confirm venue or platform</li>
-  <li>Ensure materials are ready</li>
-  <li>Distribute agenda</li>
-</ul>
-
-<h4>Technical Setup</h4>
-<ul>
-  <li>Submit ServiceNow request</li>
-  <li>Test Teams features</li>
-  <li>Confirm presenters are ready</li>
-</ul>
-
-<hr>
-
-<h2>🎯 Phase 4: Event Day Execution</h2>
-
-<h4>Before the Session</h4>
-<ul>
-  <li>Log in 30 minutes early</li>
-  <li>Test audio/video</li>
-  <li>Prepare attendance sheet</li>
-</ul>
-
-<h4>During the Session</h4>
-<ul>
-  <li>Welcome attendees</li>
-  <li>Introduce agenda</li>
-  <li>Monitor chat</li>
-  <li>Take meeting minutes</li>
-</ul>
-
-<h4>Technical Issues Protocol</h4>
-
+<h2>📝 Communication Log</h2>
 <table>
-<tr>
-  <th>Issue</th>
-  <th>Action</th>
-</tr>
-<tr>
-  <td>Presenter cannot connect</td>
-  <td>Use backup presenter</td>
-</tr>
-<tr>
-  <td>Audio/video failure</td>
-  <td>Switch to phone audio</td>
-</tr>
-<tr>
-  <td>Recording stops</td>
-  <td>Restart recording</td>
-</tr>
-<tr>
-  <td>Platform drops</td>
-  <td>Send backup link</td>
-</tr>
+    <tr><th>Time</th><th>Action</th></tr>
+    <tr><td>08:14 AM</td><td>Ticket logged</td></tr>
+    <tr><td>08:20 AM</td><td>User contacted</td></tr>
+    <tr><td>08:35 AM</td><td>Identity verified</td></tr>
+    <tr><td>09:00 AM</td><td>TAP issued & setup</td></tr>
+    <tr><td>09:56 AM</td><td>Issue resolved</td></tr>
+    <tr><td>10:05 AM</td><td>Closure email sent</td></tr>
 </table>
 
-<hr>
-
-<h2>📝 Phase 5: Post-Event Follow-Up (Within 48 Hours)</h2>
-
-<ul>
-  <li>Send follow-up email</li>
-  <li>Share minutes, slides, and action items</li>
-  <li>Log tasks in tracker</li>
-  <li>Upload recording to SharePoint</li>
-  <li>Send feedback form</li>
-</ul>
-
-<hr>
-
-<h2>🛠️ Tools Used</h2>
-
-<ul>
-  <li>Microsoft Outlook</li>
-  <li>Microsoft Teams</li>
-  <li>SharePoint</li>
-  <li>HubSpot</li>
-  <li>ServiceNow</li>
-  <li>Excel</li>
-</ul>
+<h2>📧 Closure Email</h2>
+<div class="highlight">
+<p><strong>Subject:</strong> RE: INC-20250312-004 – MFA Issue Resolved</p>
+<p>Hi James,</p>
+<p>Your MFA has been successfully re-registered and access restored.</p>
+<p>Please consider adding a backup authentication method at:<br>
+https://aka.ms/mfasetup</p>
+<p>Kind regards,<br>
+Margaret Muriuki<br>
+IT Support Specialist</p>
+</div>
 
 <hr>
 
-<h3>🔗 Related Pages</h3>
-<ul>
-  <li><a href="01-client-onboarding-workflow.html">Client Onboarding Workflow</a></li>
-  <li><a href="02-event-coordination-workflow.html">Event Coordination Workflow</a></li>
-</ul>
+<p><em>Ticket archived in ServiceNow under: Finance Department > INC-2025-March</em></p>
 
 </body>
 </html>
